@@ -19,7 +19,7 @@ kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
 #sudo mv ./kubectl /usr/local/bin/kubectl"
 
-# create first cluster - create a cluster, takes a few mins, then check things out
+# Create first cluster (this takes a few mins) then take a look around in & out of the VM
 minikube start
 
 minikube ssh
@@ -101,7 +101,7 @@ minikube service --url=true hello-nginx
 kubectl get svc
 
 
-# Example app – scale it to x3 and take a look
+# Example app – scale to x3 replicas and take a look
 kubectl get deployment
 
 kubectl get pods -o wide
