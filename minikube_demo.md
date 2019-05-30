@@ -71,10 +71,14 @@ docker logs -f <container>
 
 # miniukbe k8s dashboard - start k8s dashboard and take look around - uses metrics & heapster
 minikube dashboard
- - take a look at Default > Nodes
- - take a look at kube-system > Deployments
- - take a look at kube-system > Pods
- - take a look at storage classes
+
+-take a look at Default namespace > Nodes
+ 
+-take a look at kube-system namespace > Deployments
+ 
+-take a look at kube-system namespace > Pods
+
+-take a look at Storage Classes
 
 
 # kubectl command line - look at kubectl and keep an eye on things
@@ -110,7 +114,7 @@ kubectl get pods -o wide
 
 
 # Helm & Tiller setup - show how it's done, but not updating mine
-- show:
+-show:
 
 #curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
 
