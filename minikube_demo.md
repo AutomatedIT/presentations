@@ -19,7 +19,7 @@ kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
 #sudo mv ./kubectl /usr/local/bin/kubectl"
 
-# Create first cluster (this takes a few mins) then take a look around in & out of the VM
+# Create first cluster - (this takes a few mins) then take a look around in & out of the VM
 minikube start
 
 minikube ssh
@@ -69,7 +69,7 @@ docker ps | grep -i metrics
 docker logs -f <container>
 
 
-# Miniukbe k8s dashboard - start k8s dashboard and take look around - uses metrics & heapster
+# Miniukbe k8s dashboard - start k8s dashboard and take look around - uses the metrics & heapster deployed earlier
 minikube dashboard
 
 -take a look at Default namespace > Nodes
@@ -87,6 +87,8 @@ kubectl get deployment -n kube-system
 kubectl get pods -o wide -n kube-system
 
 kubectl get services
+
+kubectl
 
 
 # Example app – deploy "Hello World" nginx docker image
@@ -133,7 +135,7 @@ helm init --service-account tiller
 kubectl --namespace kube-system get pods
 
 
-# Helm Charts - look at the list of available Charts, deploy a couple
+# Helm Charts - look at the list of available Charts, then deploy a couple
 -show:
 
 https://github.com/helm/charts
@@ -143,6 +145,8 @@ helm repo update
 helm install stable/redis
 
 helm install stable/mysql
+
+watch kubectl get pods -o wide
 
 
 # Helm Charts part deux - watch Helm charts deploy & startup
@@ -169,7 +173,10 @@ minikube service --url=true wp-k8s-wordpress
 echo Password: $(kubectl get secret wp-k8s-wordpress -o
 jsonpath="{.data.wordpress-password}" | base64 --decode)
 
+
 # Bonus Bonus Demo - Jenkins too
+helm delete wp-k8s
+
 helm install --set serviceType=NodePort --name jenki stable/jenkins
 
 watch kubectl get pods -o wide
