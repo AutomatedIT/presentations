@@ -1,17 +1,22 @@
 
 # cleanup - remove any previous cluster & settings
 minikube delete; rm -rf ~/.minikube
+
 delete VM - selecting to remove "all files"
 
 # installer links - setup VirtalBox, Minikube and kubectl
 VirtualBox: https://www.virtualbox.org/wiki/Downloads
 
 Minikube: https://kubernetes.io/docs/tasks/tools/install-minikube/
+
 #curl -Lo minikube https://storage.googleapis.com/minikube/releases/v1.1.0/minikube-linux-amd64 && chmod +x minikube && sudo cp minikube /usr/local/bin/ && rm minikube
 
 kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl/
+
 #curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.14.0/bin/linux/amd64/kubectl
+
 #chmod +x ./kubectl
+
 #sudo mv ./kubectl /usr/local/bin/kubectl"
 
 # create first cluster - create a cluster, takes a few mins, then check things out
