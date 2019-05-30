@@ -1,10 +1,10 @@
 
-# cleanup - remove any previous cluster & settings
+# Cleanup - remove any previous cluster & settings
 minikube delete; rm -rf ~/.minikube
 
 delete VM - selecting to remove "all files"
 
-# installer links - setup VirtalBox, Minikube and kubectl
+# Installer links - setup VirtalBox, Minikube and kubectl
 VirtualBox: https://www.virtualbox.org/wiki/Downloads
 
 Minikube: https://kubernetes.io/docs/tasks/tools/install-minikube/
@@ -39,7 +39,7 @@ kubectl get nodes
 kubectl describe nodes
 
 
-# minikube addons - show some of the ways minkube makes things easier for local dev
+# Minikube addons - show some of the ways minkube makes things easier for local dev
 ls -al ~/.minikube; ls -al ~/.kube
 
 minikube addons list
@@ -57,7 +57,7 @@ minikube addons enable dashboard
 minikube addons list
 
 
-# minikube docker-env - setup local docker client to use minikube docker host
+# Minikube docker-env - setup local docker client to use minikube docker host
 minikube docker-env
 
 eval $(minikube docker-env)
@@ -69,7 +69,7 @@ docker ps | grep -i metrics
 docker logs -f <container>
 
 
-# miniukbe k8s dashboard - start k8s dashboard and take look around - uses metrics & heapster
+# Miniukbe k8s dashboard - start k8s dashboard and take look around - uses metrics & heapster
 minikube dashboard
 
 -take a look at Default namespace > Nodes
@@ -89,7 +89,7 @@ kubectl get pods -o wide -n kube-system
 kubectl get services
 
 
-# EXAMPLE BASIC app – Initial Deployment of nginx docker image
+# Example app – deploy "Hello World" nginx docker image
 kubectl run hello-nginx --image=nginx --port=80
 
 kubectl get pods -o wide
@@ -101,7 +101,7 @@ minikube service --url=true hello-nginx
 kubectl get svc
 
 
-# EXAMPLE BASIC app – Scaling it up to 3 and take a look
+# Example app – scale it to x3 and take a look
 kubectl get deployment
 
 kubectl get pods -o wide
@@ -113,7 +113,7 @@ kubectl get deployment
 kubectl get pods -o wide
 
 
-# Helm & Tiller setup - show how it's done, but not updating mine
+# Helm & Tiller setup - show how it's done - not updating mine just in case...
 -show:
 
 #curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
@@ -123,7 +123,7 @@ kubectl get pods -o wide
 ./get_helm.sh
 
 
-# Tiller Cluster Prep and Install - add pre-reqs for tiller, deploy via helm and take a look
+# Tiller prep & install - add RBAC for tiller, deploy via helm and take a look
 kubectl create serviceaccount -n kube-system tiller
 
 kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
