@@ -175,6 +175,8 @@ helm
 
 # Demo - Jenkins too
 
+`if my laptop can handle it...`
+
 helm ls
 
 helm delete <things>
@@ -190,10 +192,14 @@ minikube service --url=true jenki-jenkins
 -user: admin
 
 
-# Bonus Bonus demo - deploy Wordpress w/MariaDB
+# Bonus demo - deploy Wordpress w/MariaDB
+
+`if laptop still working...`
+
 helm ls
 
-helm delete jenki #give it a while...
+helm delete --purge jenki
+#give it a while...
 
 kubectl delete pods <jenkinpod> if needed
 
