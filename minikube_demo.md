@@ -1,26 +1,42 @@
 
-# Cleanup - remove any previous cluster & settings
-minikube delete; rm -rf ~/.minikube
+---
+# This file (minikube_demo.md) is in our GitHub repo:
 
-delete VM - selecting to remove "all files"
+    https://github.com/AutomatedIT/presentations
+---
 
-# Installer links - setup VirtalBox, Minikube and kubectl
+
+# Installer links
+- setup VirtalBox, Minikube and kubectl
+
 VirtualBox: https://www.virtualbox.org/wiki/Downloads
 
 Minikube: https://kubernetes.io/docs/tasks/tools/install-minikube/
 
-#curl -Lo minikube https://storage.googleapis.com/minikube/releases/v1.1.0/minikube-linux-amd64 && chmod +x minikube && sudo cp minikube /usr/local/bin/ && rm minikube
-
 kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
-#curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.14.0/bin/linux/amd64/kubectl
+`curl -Lo minikube https://storage.googleapis.com/minikube/releases/v1.1.0/minikube-linux-amd64 && chmod +x minikube && sudo cp minikube /usr/local/bin/ && rm minikube`
 
-#chmod +x ./kubectl
+`curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.14.0/bin/linux/amd64/kubectl`
 
-#sudo mv ./kubectl /usr/local/bin/kubectl"
+`chmod +x ./kubectl`
 
-# Create first cluster - (this takes a few mins) then take a look around in & out of the VM
-minikube start
+`sudo mv ./kubectl /usr/local/bin/kubectl"``
+
+# Cleanup
+- if required, remove any previous cluster & settings
+
+`minikube delete; rm -rf ~/.minikube`
+
+delete VM in VirtualBox - selecting to remove "all files"
+
+
+---
+
+# Create first cluster
+- then take a look around in & out of the VM
+
+minikube start # (already done)
 
 minikube ssh
 
@@ -78,8 +94,6 @@ minikube dashboard
  
 -take a look at kube-system namespace > Pods
 
--take a look at Storage Classes
-
 
 # kubectl command line - look at kubectl and keep an eye on things
 kubectl get deployment -n kube-system
@@ -114,15 +128,17 @@ kubectl get deployment
 
 kubectl get pods -o wide
 
+kubectl scale --replicas=0 deployment/hello-nginx
+
 
 # Helm & Tiller setup - show how it's done - not updating mine just in case...
 -show:
 
-#curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
+`curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh`
 
-#chmod 700 get_helm.sh
+`chmod 700 get_helm.sh`
 
-./get_helm.sh
+`./get_helm.sh`
 
 
 # Tiller prep & install - add RBAC for tiller, deploy via helm and take a look
@@ -157,25 +173,11 @@ helm ls
 helm
 
 
-# Bonus demo - deploy Wordpress w/MariaDB
+# Demo - Jenkins too
+
 helm ls
 
-helm delete <previous things>
-
-helm install --set serviceType=NodePort --name wp-k8s stable/wordpress
-
-watch kubectl get pods -o wide
-
-minikube service --url=true wp-k8s-wordpress
-
--use https and accept warning...
-
-echo Password: $(kubectl get secret wp-k8s-wordpress -o
-jsonpath="{.data.wordpress-password}" | base64 --decode)
-
-
-# Bonus Bonus Demo - Jenkins too
-helm delete wp-k8s
+helm delete <things>
 
 helm install --set serviceType=NodePort --name jenki stable/jenkins
 
@@ -186,3 +188,31 @@ minikube service --url=true jenki-jenkins
 -password in UI from Pods > Jenki
 
 -user: admin
+
+
+# Bonus Bonus demo - deploy Wordpress w/MariaDB
+helm ls
+
+helm delete jenki #give it a while...
+
+kubectl delete pods <jenkinpod> if needed
+
+helm install --set serviceType=NodePort --name wp-k8s stable/wordpress
+
+watch kubectl get pods -o wide
+
+minikube service --url=true wp-k8s-wordpress
+
+-use https and accept warning...
+
+-log in as `user` and...
+
+echo Password: $(kubectl get secret wp-k8s-wordpress -o
+jsonpath="{.data.wordpress-password}" | base64 --decode)
+
+
+---
+
+# Cleanup
+
+minikube delete; rm -rf ~/.minikube
