@@ -88,9 +88,11 @@ docker logs -f <container>
 minikube dashboard
 
 -take a look at Default namespace > Nodes
- 
+
+
 -take a look at kube-system namespace > Deployments
- 
+
+
 -take a look at kube-system namespace > Pods
 
 
