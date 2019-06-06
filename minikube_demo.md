@@ -1,13 +1,12 @@
 
 ---
 # This file (minikube_demo.md) is in our GitHub repo:
-
-    https://github.com/AutomatedIT/presentations
 ---
+    https://github.com/AutomatedIT/presentations
 
 
 # Installer links
-- setup VirtalBox, Minikube and kubectl
+- setup VirtualBox, Minikube and kubectl
 
 VirtualBox: https://www.virtualbox.org/wiki/Downloads
 
@@ -36,7 +35,7 @@ delete VM in VirtualBox - selecting to remove "all files"
 # Create first cluster
 - then take a look around in & out of the VM
 
-minikube start # (already done)
+minikube start # (already done before we started)
 
 minikube ssh
 
