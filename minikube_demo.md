@@ -21,7 +21,7 @@ kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
 `chmod +x ./kubectl`
 
-`sudo mv ./kubectl /usr/local/bin/kubectl"`
+`sudo mv ./kubectl /usr/local/bin/kubectl`
 
 # Cleanup
 - if required, remove any previous cluster & settings
